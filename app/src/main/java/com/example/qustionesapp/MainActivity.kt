@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         falseButton=findViewById(R.id.flase_button)
         nextButton=findViewById(R.id.next_button)
         questionTextView=findViewById(R.id.question_text_view)
+        prevButton = findViewById(R.id.prev_button)
 
 
 
@@ -59,9 +60,17 @@ class MainActivity : AppCompatActivity() {
            updateQusetion()
 
         }
+        prevButton.setOnClickListener {
+            currentIndex = if(currentIndex == 0) {
+                questionBank.size - 1
+            }
+            else {
+                currentIndex - 1
+            }
 
+            updateQusetion()
+        }
 
-        // The First Question of Challenges 4
 
         questionTextView.setOnClickListener {
             currentIndex =(currentIndex + 1)% questionBank.size
